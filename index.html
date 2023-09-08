@@ -9,6 +9,14 @@
     
     <script>
         navigator.mediaDevices.getUserMedia({audio: true, video: true})
+        .then(
+            (stream) => {
+                console.log(stream)
+            }
+        )
+        .catch((error) => {
+            console.error(error)
+        })
     </script>
 </body>
 </html>
