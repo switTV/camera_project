@@ -6,17 +6,22 @@
     <title>Camara</title>
 </head>
 <body>
-    
+    <video autoplay="true" id="video_element"></video>
+    <p>holaaaaaaaaaaalalalalal</p>
     <script>
+        let video = document.getElementById("video_element")
+        
         navigator.mediaDevices.getUserMedia({audio: true, video: true})
         .then(
             (stream) => {
+                video.srcObject = stream
                 console.log(stream)
             }
         )
         .catch((error) => {
             console.error(error)
         })
+
     </script>
 </body>
 </html>
