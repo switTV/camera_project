@@ -7,8 +7,9 @@
     <title>Camara</title>
 </head>
 <body>
+    <button id="take_picture">Sacar foto</button>
     <video autoplay="true" id="video_element"></video>
-    <p>holaaaaaaaaaaalalalalal</p>
+    <canvas id="canvas_foto" height="70vh" width="100vw"></canvas>
     <script>
         let video = document.getElementById("video_element")
         
@@ -18,11 +19,20 @@
                 video.srcObject = stream
                 console.log(stream)
             }
-        )
-        .catch((error) => {
-            console.error(error)
+            )
+            .catch((error) => {
+                console.error(error)
+            })
+        document.getElementById("take_picture").addEventListener("click", () => {
+            take_snapshot()
         })
 
+        function take_snapshot() {
+            const canvas = document.getElementById("canvas_foto")
+            let ctx = canvas.getContext("2d")
+            ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight)
+        }
+            
     </script>
 </body>
 </html>
